@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  spotify-manager:
+    build: .
+    container_name: spotify-playlist-manager
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env
+      - ./proxy.txt:/app/proxy.txt
+    environment:
+      - DISPLAY=${DISPLAY}
+    network_mode: host
+    restart: unless-stopped 
